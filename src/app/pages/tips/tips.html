@@ -8,21 +8,23 @@
     <div class="guides-list">
       @for (guide of guides; track guide.title) {
         <article class="guide-card">
-          @if (guide.image) {
-            <img class="guide-image" [src]="guide.image" [alt]="guide.title">
-          } @else {
-            <div class="guide-image-placeholder">
-              <span>{{ guide.category }}</span>
-            </div>
-          }
+          <a [routerLink]="'/tips/' + guide.slug">
+            @if (guide.image) {
+              <img class="guide-image" [src]="guide.image" [alt]="guide.title">
+            } @else {
+              <div class="guide-image-placeholder">
+                <span>{{ guide.category }}</span>
+              </div>
+            }
+          </a>
           <div class="guide-content">
             <div class="guide-meta-top">
               <span class="guide-category">{{ guide.category }}</span>
               <span class="guide-time">{{ guide.readTime }}</span>
             </div>
-            <h2><a routerLink="/tips">{{ guide.title }}</a></h2>
+            <h2><a [routerLink]="'/tips/' + guide.slug">{{ guide.title }}</a></h2>
             <p>{{ guide.excerpt }}</p>
-            <a routerLink="/tips" class="read-link">Read More</a>
+            <a [routerLink]="'/tips/' + guide.slug" class="read-link">Read More</a>
           </div>
         </article>
       }

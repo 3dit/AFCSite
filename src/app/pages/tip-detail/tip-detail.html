@@ -1,0 +1,40 @@
+<div class="page-layout">
+  <main class="main-content">
+    @if (guide) {
+      <div class="guide-detail">
+        <div class="back-bar">
+          <a class="back-link" (click)="goBack()">&larr; Back to Tips &amp; Guides</a>
+        </div>
+
+        <div class="guide-header">
+          <span class="guide-category">{{ guide.category }}</span>
+          <h1>{{ guide.title }}</h1>
+          <span class="guide-read-time">{{ guide.readTime }}</span>
+        </div>
+
+        @if (guide.image) {
+          <img class="guide-hero" [src]="guide.image" [alt]="guide.title">
+        }
+
+        <p class="guide-intro">{{ guide.intro }}</p>
+
+        <div class="guide-body">
+          @for (section of guide.sections; track section.heading) {
+            <section class="guide-section">
+              <h2>{{ section.heading }}</h2>
+              <p>{{ section.content }}</p>
+            </section>
+          }
+        </div>
+      </div>
+    } @else {
+      <div class="not-found">
+        <h1>Guide Not Found</h1>
+        <p>Sorry, we couldn't find the guide you're looking for.</p>
+        <a routerLink="/tips" class="back-link">&larr; Browse all guides</a>
+      </div>
+    }
+  </main>
+
+  <app-sidebar />
+</div>

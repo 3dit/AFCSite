@@ -5,6 +5,7 @@ export const routes: Routes = [
   { path: 'recipes', loadComponent: () => import('./pages/recipes/recipes').then(m => m.RecipesComponent) },
   { path: 'recipes/:slug', loadComponent: () => import('./pages/recipe-detail/recipe-detail').then(m => m.RecipeDetailComponent) },
   { path: 'tips', loadComponent: () => import('./pages/tips/tips').then(m => m.TipsComponent) },
+  { path: 'tips/:slug', loadComponent: () => import('./pages/tip-detail/tip-detail').then(m => m.TipDetailComponent) },
   { path: 'meal-planning', loadComponent: () => import('./pages/meal-planning/meal-planning').then(m => m.MealPlanningComponent) },
   { path: 'about', loadComponent: () => import('./pages/about/about').then(m => m.AboutComponent) },
   { path: 'contact', loadComponent: () => import('./pages/contact/contact').then(m => m.ContactComponent) },
