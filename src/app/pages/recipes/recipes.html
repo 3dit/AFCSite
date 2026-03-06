@@ -1,0 +1,41 @@
+<div class="page-layout">
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Recipes</h1>
+      <p class="page-intro">Delicious, tested recipes for every allergy and dietary need. Each recipe is clearly labeled so you can cook with confidence.</p>
+    </div>
+
+    <div class="filter-bar">
+      @for (filter of filters; track filter) {
+        <button
+          class="filter-btn"
+          [class.active]="activeFilter === filter"
+          (click)="setFilter(filter)">
+          {{ filter }}
+        </button>
+      }
+    </div>
+
+    <div class="recipe-list">
+      @for (recipe of filteredRecipes; track recipe.title) {
+        <article class="recipe-card">
+          <div class="recipe-image-placeholder">
+            <span>{{ recipe.category }}</span>
+          </div>
+          <div class="recipe-info">
+            <span class="recipe-category">{{ recipe.category }}</span>
+            <h2><a routerLink="/recipes">{{ recipe.title }}</a></h2>
+            <p>{{ recipe.excerpt }}</p>
+            <div class="recipe-meta">
+              <span class="meta-item">{{ recipe.time }}</span>
+              <span class="meta-sep">&middot;</span>
+              <span class="meta-item">{{ recipe.difficulty }}</span>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </main>
+
+  <app-sidebar />
+</div>

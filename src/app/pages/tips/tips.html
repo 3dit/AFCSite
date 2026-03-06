@@ -1,0 +1,29 @@
+<div class="page-layout">
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Tips & Guides</h1>
+      <p class="page-intro">Expert advice, how-tos, and in-depth guides to help you navigate allergen-free cooking with ease and confidence.</p>
+    </div>
+
+    <div class="guides-list">
+      @for (guide of guides; track guide.title) {
+        <article class="guide-card">
+          <div class="guide-image-placeholder">
+            <span>{{ guide.category }}</span>
+          </div>
+          <div class="guide-content">
+            <div class="guide-meta-top">
+              <span class="guide-category">{{ guide.category }}</span>
+              <span class="guide-time">{{ guide.readTime }}</span>
+            </div>
+            <h2><a routerLink="/tips">{{ guide.title }}</a></h2>
+            <p>{{ guide.excerpt }}</p>
+            <a routerLink="/tips" class="read-link">Read More</a>
+          </div>
+        </article>
+      }
+    </div>
+  </main>
+
+  <app-sidebar />
+</div>

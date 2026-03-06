@@ -1,0 +1,46 @@
+<div class="page-layout">
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Meal Planning</h1>
+      <p class="page-intro">Take the stress out of allergen-free cooking with our weekly meal plans. Each plan is customizable to your family's specific needs.</p>
+    </div>
+
+    <section class="weekly-plan">
+      <h2 class="section-heading">This Week's Plan</h2>
+      <div class="plan-grid">
+        @for (item of weeklyPlan; track item.day) {
+          <div class="plan-card">
+            <div class="plan-day">{{ item.day }}</div>
+            <div class="plan-meal">{{ item.meal }}</div>
+            <div class="plan-tags">
+              @for (tag of item.tags; track tag) {
+                <span class="tag">{{ tag }}</span>
+              }
+            </div>
+            <a routerLink="/recipes" class="plan-link">View Recipe</a>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="planning-tips">
+      <h2 class="section-heading">Planning Tips</h2>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h3>Batch Cooking</h3>
+          <p>Prepare large batches of allergen-free staples like sauces, grains, and proteins on the weekend to save time during the week.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Stock Your Pantry</h3>
+          <p>Keep allergen-free essentials on hand: gluten-free flours, coconut aminos, nutritional yeast, and alternative milks.</p>
+        </div>
+        <div class="tip-card">
+          <h3>Prep Ahead</h3>
+          <p>Wash and chop vegetables, marinate proteins, and measure dry ingredients ahead of time for easier weeknight cooking.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <app-sidebar />
+</div>

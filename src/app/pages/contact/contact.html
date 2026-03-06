@@ -1,0 +1,54 @@
+<div class="page-layout">
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Contact Us</h1>
+      <p class="page-intro">Have a question, recipe request, or just want to say hello? We'd love to hear from you.</p>
+    </div>
+
+    <form class="contact-form" (submit)="$event.preventDefault()">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="your@email.com" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <select id="subject">
+          <option value="">Select a topic</option>
+          <option value="recipe">Recipe Question</option>
+          <option value="suggestion">Recipe Suggestion</option>
+          <option value="allergy">Allergy Information</option>
+          <option value="partnership">Partnership Inquiry</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="6" placeholder="Your message..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+      <div class="info-card">
+        <h3>Email</h3>
+        <p>hello&#64;allergenfree cooking.com</p>
+      </div>
+      <div class="info-card">
+        <h3>Social</h3>
+        <p>Follow us for daily recipes and tips on Instagram, Facebook, and Pinterest.</p>
+      </div>
+      <div class="info-card">
+        <h3>Press</h3>
+        <p>For media inquiries, please email press&#64;allergenfreecooking.com</p>
+      </div>
+    </div>
+  </main>
+
+  <app-sidebar />
+</div>

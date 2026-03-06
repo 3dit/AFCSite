@@ -1,0 +1,49 @@
+<aside class="sidebar">
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">Most Popular</h3>
+    <ul class="popular-list">
+      @for (recipe of popularRecipes; track recipe.title; let i = $index) {
+        <li>
+          <a [routerLink]="recipe.link">
+            <span class="num">{{ i + 1 }}</span>
+            <span class="title">{{ recipe.title }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">Browse by Allergen</h3>
+    <ul class="category-list">
+      @for (cat of categories; track cat.label) {
+        <li>
+          <a routerLink="/recipes">
+            <span>{{ cat.label }}</span>
+            <span class="count">{{ cat.count }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div class="sidebar-section sidebar-newsletter">
+    <h3 class="sidebar-heading">Stay Updated</h3>
+    <p>Get allergen-free recipes and tips delivered to your inbox weekly.</p>
+    <form class="newsletter-form" (submit)="$event.preventDefault()">
+      <input type="email" placeholder="Your email address" aria-label="Email address" />
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+
+  <div class="sidebar-section">
+    <h3 class="sidebar-heading">Quick Links</h3>
+    <ul class="quick-links">
+      @for (link of quickLinks; track link.label) {
+        <li>
+          <a [routerLink]="link.link">{{ link.label }}</a>
+        </li>
+      }
+    </ul>
+  </div>
+</aside>
