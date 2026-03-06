@@ -18,6 +18,12 @@
 .DS_Store
 Thumbs.db
 
+# Windows reserved device name (created by shell redirection)
+nul
+
+# Claude temp files
+tmpclaude-*
+
 # Angular cache
 /.angular/cache
 
@@ -27,3 +33,11 @@ Thumbs.db
 
 # Test coverage
 /coverage
+
+# .NET
+server/bin/
+server/obj/
+/publish
+*.db
+*.db-shm
+*.db-wal

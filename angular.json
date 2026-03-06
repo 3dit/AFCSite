@@ -25,7 +25,7 @@
               "src/styles.css"
             ],
             "server": "src/main.server.ts",
-            "ssr": false
+            "outputMode": "static"
           },
           "configurations": {
             "production": {
@@ -53,6 +53,9 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "buildTarget": "AFCSite:build:production"

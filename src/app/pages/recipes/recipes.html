@@ -9,7 +9,7 @@
       @for (filter of filters; track filter) {
         <button
           class="filter-btn"
-          [class.active]="activeFilter === filter"
+          [class.active]="activeFilter() === filter"
           (click)="setFilter(filter)">
           {{ filter }}
         </button>
@@ -17,7 +17,7 @@
     </div>
 
     <div class="recipe-list">
-      @for (recipe of filteredRecipes; track recipe.title) {
+      @for (recipe of filteredRecipes(); track recipe.title) {
         <article class="recipe-card">
           <a [routerLink]="'/recipes/' + recipe.slug">
             @if (recipe.image) {
@@ -31,7 +31,7 @@
           <div class="recipe-info">
             <span class="recipe-category">{{ recipe.category }}</span>
             <h2><a [routerLink]="'/recipes/' + recipe.slug">{{ recipe.title }}</a></h2>
-            <p>{{ recipe.excerpt }}</p>
+            <p>{{ recipe.description }}</p>
             <div class="recipe-meta">
               <span class="meta-item">{{ recipe.time }}</span>
               <span class="meta-sep">&middot;</span>

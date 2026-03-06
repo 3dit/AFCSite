@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>AFCSite.Server</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.3" />
+  </ItemGroup>
+
+  <!--
+    On publish, copy the Angular prerendered output into wwwroot.
+    Run 'npm run build' in the Angular root before 'dotnet publish'.
+  -->
+  <Target Name="CopyAngularBuild" AfterTargets="Build" Condition="Exists('..\dist\AFCSite\browser')">
+    <ItemGroup>
+      <AngularFiles Include="..\dist\AFCSite\browser\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(AngularFiles)" DestinationFolder="$(OutputPath)wwwroot\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="PublishAngularBuild" AfterTargets="Publish" Condition="Exists('..\dist\AFCSite\browser')">
+    <ItemGroup>
+      <AngularPublishFiles Include="..\dist\AFCSite\browser\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(AngularPublishFiles)" DestinationFolder="$(PublishDir)wwwroot\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

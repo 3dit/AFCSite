@@ -4,7 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:api": "cd server && dotnet run",
     "build": "ng build",
+    "prerender": "node scripts/prerender-build.mjs",
+    "build:all": "npm run prerender && cd server && dotnet build",
+    "publish": "npm run prerender && cd server && dotnet publish -c Release -o ../publish",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:AFCSite": "node dist/AFCSite/server/server.mjs"

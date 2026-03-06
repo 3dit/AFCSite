@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet nuget locals http-cache --clear)",
+      "Bash(dotnet add package Microsoft.EntityFrameworkCore.Sqlite)"
+    ]
+  }
+}

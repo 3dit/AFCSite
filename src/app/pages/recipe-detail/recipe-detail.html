@@ -1,8 +1,8 @@
 <div class="page-layout">
   <main class="main-content">
-    @if (recipe) {
+    @if (recipe(); as recipe) {
       <div class="recipe-detail">
-        <div class="back-bar" [class.show-title]="titleStuck">
+        <div class="back-bar" [class.show-title]="titleStuck()">
           <a class="back-link" (click)="goBack()">&larr; Back to Recipes</a>
           <span class="sticky-title">{{ recipe.title }}</span>
         </div>
