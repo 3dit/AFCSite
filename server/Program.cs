@@ -13,7 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<AppDbContext>(opts =>
-    opts.UseSqlite(builder.Configuration.GetConnectionString("Default") ?? "Data Source=afcsite.db"));
+    opts.UseSqlServer(builder.Configuration.GetConnectionString("AFCContext")
+        ?? throw new InvalidOperationException("Connection string 'AFCContext' not found.")));
 
 builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
