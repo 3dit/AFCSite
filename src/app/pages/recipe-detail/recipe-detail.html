@@ -2,7 +2,9 @@
   <main class="main-content">
     @if (recipe) {
       <div class="recipe-detail">
-        <a class="back-link" (click)="goBack()">&larr; Back to Recipes</a>
+        <div class="back-bar">
+          <a class="back-link" (click)="goBack()">&larr; Back to Recipes</a>
+        </div>
 
         <div class="recipe-header">
           <span class="recipe-category">{{ recipe.category }}</span>
