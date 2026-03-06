@@ -10,11 +10,11 @@ import { RouterLink } from '@angular/router';
 })
 export class SidebarComponent {
   popularRecipes = [
-    { title: 'Classic Gluten-Free Banana Bread', link: '/recipes' },
-    { title: 'Dairy-Free Creamy Tomato Soup', link: '/recipes' },
-    { title: 'Nut-Free Pesto Pasta', link: '/recipes' },
-    { title: 'Egg-Free Chocolate Cake', link: '/recipes' },
-    { title: 'Soy-Free Stir Fry', link: '/recipes' },
+    { title: 'Classic Gluten-Free Banana Bread', link: '/recipes/classic-gluten-free-banana-bread' },
+    { title: 'Dairy-Free Creamy Tomato Soup', link: '/recipes/dairy-free-creamy-tomato-soup' },
+    { title: 'Nut-Free Pesto Pasta', link: '/recipes/nut-free-pesto-pasta' },
+    { title: 'Egg-Free Chocolate Cake', link: '/recipes/egg-free-chocolate-cake' },
+    { title: 'Soy-Free Teriyaki Chicken', link: '/recipes/soy-free-teriyaki-chicken' },
   ];
 
   categories = [

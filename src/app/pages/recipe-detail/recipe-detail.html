@@ -1,0 +1,54 @@
+<div class="page-layout">
+  <main class="main-content">
+    @if (recipe) {
+      <div class="recipe-detail">
+        <a class="back-link" (click)="goBack()">&larr; Back to Recipes</a>
+
+        <div class="recipe-header">
+          <span class="recipe-category">{{ recipe.category }}</span>
+          <h1>{{ recipe.title }}</h1>
+          <p class="recipe-description">{{ recipe.description }}</p>
+          <div class="recipe-meta">
+            <span class="meta-item">{{ recipe.time }}</span>
+            <span class="meta-sep">&middot;</span>
+            <span class="meta-item">{{ recipe.difficulty }}</span>
+            <span class="meta-sep">&middot;</span>
+            <span class="meta-item">{{ recipe.servings }}</span>
+          </div>
+        </div>
+
+        @if (recipe.image) {
+          <img class="recipe-hero" [src]="recipe.image" [alt]="recipe.title">
+        }
+
+        <div class="recipe-content">
+          <section class="ingredients-section">
+            <h2>Ingredients</h2>
+            <ul class="ingredients-list">
+              @for (ingredient of recipe.ingredients; track ingredient) {
+                <li>{{ ingredient }}</li>
+              }
+            </ul>
+          </section>
+
+          <section class="method-section">
+            <h2>Method</h2>
+            <ol class="method-list">
+              @for (step of recipe.method; track step) {
+                <li>{{ step }}</li>
+              }
+            </ol>
+          </section>
+        </div>
+      </div>
+    } @else {
+      <div class="not-found">
+        <h1>Recipe Not Found</h1>
+        <p>Sorry, we couldn't find the recipe you're looking for.</p>
+        <a routerLink="/recipes" class="back-link">&larr; Browse all recipes</a>
+      </div>
+    }
+  </main>
+
+  <app-sidebar />
+</div>
