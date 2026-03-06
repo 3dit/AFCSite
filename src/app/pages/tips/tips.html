@@ -8,9 +8,13 @@
     <div class="guides-list">
       @for (guide of guides; track guide.title) {
         <article class="guide-card">
-          <div class="guide-image-placeholder">
-            <span>{{ guide.category }}</span>
-          </div>
+          @if (guide.image) {
+            <img class="guide-image" [src]="guide.image" [alt]="guide.title">
+          } @else {
+            <div class="guide-image-placeholder">
+              <span>{{ guide.category }}</span>
+            </div>
+          }
           <div class="guide-content">
             <div class="guide-meta-top">
               <span class="guide-category">{{ guide.category }}</span>

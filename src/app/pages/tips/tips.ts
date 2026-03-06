@@ -15,7 +15,8 @@ export class TipsComponent {
       title: 'The Ultimate Allergen Substitution Guide',
       excerpt: 'A comprehensive reference for replacing common allergens in any recipe without sacrificing taste or texture.',
       category: 'Substitutions',
-      readTime: '12 min read'
+      readTime: '12 min read',
+      image: 'images/ultimate_guide_on_table.png'
     },
     {
       title: 'How to Read Food Labels Like a Pro',
