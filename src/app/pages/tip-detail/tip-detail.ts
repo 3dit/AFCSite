@@ -63,7 +63,7 @@ export class TipDetailComponent implements OnInit {
       title: 'How to Read Food Labels Like a Pro',
       category: 'Labels',
       readTime: '8 min read',
-      image: '',
+      image: 'images/How_to_Read_Food_Labels_Like_a_Pro.png',
       intro: 'Food labels can be confusing, even misleading. Understanding how to decode ingredient lists, recognize hidden allergens, and interpret advisory statements is one of the most important skills for anyone managing food allergies. This guide walks you through everything you need to know.',
       sections: [
         {
@@ -97,7 +97,7 @@ export class TipDetailComponent implements OnInit {
       title: 'Setting Up an Allergy-Safe Kitchen',
       category: 'Safety',
       readTime: '10 min read',
-      image: '',
+      image: 'images/Setting_Up_an_Allergy_Safe_Kitchen.png',
       intro: 'Cross-contamination is one of the biggest risks in a shared kitchen. Whether you are living in a household where only one person has allergies or running an entirely allergen-free kitchen, proper setup and habits can dramatically reduce the risk of accidental exposure.',
       sections: [
         {
@@ -131,7 +131,7 @@ export class TipDetailComponent implements OnInit {
       title: 'Dining Out with Food Allergies',
       category: 'Lifestyle',
       readTime: '7 min read',
-      image: '',
+      image: 'images/Setting_Up_an_Allergy-Safe_Kitchen.png',
       intro: 'Eating at restaurants does not have to be stressful. With the right preparation and communication, you can enjoy meals out safely. This guide covers how to choose restaurants, communicate with staff, and handle tricky situations with confidence.',
       sections: [
         {
@@ -161,7 +161,7 @@ export class TipDetailComponent implements OnInit {
       title: 'Baking Without Eggs: Techniques That Work',
       category: 'Substitutions',
       readTime: '9 min read',
-      image: '',
+      image: 'images/Baking_Without_Eggs_Techniques_That_Work.png',
       intro: 'Eggs play multiple roles in baking — binding, leavening, adding moisture, and providing structure. The key to successful egg-free baking is understanding which role the egg plays in your recipe and choosing a substitute that fills that specific function.',
       sections: [
         {
@@ -195,7 +195,7 @@ export class TipDetailComponent implements OnInit {
       title: 'Allergen-Free Cooking for Kids',
       category: 'Lifestyle',
       readTime: '6 min read',
-      image: '',
+      image: 'images/Allergen-Free Cooking for Kids.png',
       intro: 'Getting kids involved in the kitchen builds confidence, teaches them about their allergies, and makes allergen-free eating feel normal rather than restrictive. These strategies make cooking with children safe, fun, and educational.',
       sections: [
         {
