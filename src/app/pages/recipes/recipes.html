@@ -19,9 +19,13 @@
     <div class="recipe-list">
       @for (recipe of filteredRecipes; track recipe.title) {
         <article class="recipe-card">
-          <div class="recipe-image-placeholder">
-            <span>{{ recipe.category }}</span>
-          </div>
+          @if (recipe.image) {
+            <img class="recipe-image" [src]="recipe.image" [alt]="recipe.title">
+          } @else {
+            <div class="recipe-image-placeholder">
+              <span>{{ recipe.category }}</span>
+            </div>
+          }
           <div class="recipe-info">
             <span class="recipe-category">{{ recipe.category }}</span>
             <h2><a routerLink="/recipes">{{ recipe.title }}</a></h2>

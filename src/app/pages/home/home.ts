@@ -14,7 +14,7 @@ export class HomeComponent {
     title: 'Spring Vegetable Risotto: Completely Dairy-Free',
     description: 'A creamy, satisfying risotto made with coconut cream and nutritional yeast that rivals any traditional version.',
     category: 'Dairy-Free',
-    author: 'Sarah Mitchell',
+    author: 'Michelle Hill',
     date: 'March 5, 2026',
     image: ''
   };
