@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { SidebarComponent } from '../../components/sidebar/sidebar';
@@ -20,8 +20,12 @@ interface Guide {
   templateUrl: './tip-detail.html',
   styleUrl: './tip-detail.css'
 })
-export class TipDetailComponent implements OnInit {
+export class TipDetailComponent implements OnInit, AfterViewInit, OnDestroy {
   guide: Guide | null = null;
+  titleStuck = false;
+
+  @ViewChild('guideHeader') guideHeader!: ElementRef;
+  private observer!: IntersectionObserver;
 
   guides: Guide[] = [
     {
@@ -231,5 +235,19 @@ export class TipDetailComponent implements OnInit {
   ngOnInit() {
     const slug = this.route.snapshot.paramMap.get('slug');
     this.guide = this.guides.find(g => g.slug === slug) || null;
+  }
+
+  ngAfterViewInit() {
+    if (this.guideHeader) {
+      this.observer = new IntersectionObserver(
+        ([entry]) => { this.titleStuck = !entry.isIntersecting; },
+        { threshold: 0 }
+      );
+      this.observer.observe(this.guideHeader.nativeElement);
+    }
+  }
+
+  ngOnDestroy() {
+    this.observer?.disconnect();
   }
 }

@@ -2,11 +2,12 @@
   <main class="main-content">
     @if (guide) {
       <div class="guide-detail">
-        <div class="back-bar">
+        <div class="back-bar" [class.show-title]="titleStuck">
           <a class="back-link" (click)="goBack()">&larr; Back to Tips &amp; Guides</a>
+          <span class="sticky-title">{{ guide.title }}</span>
         </div>
 
-        <div class="guide-header">
+        <div class="guide-header" #guideHeader>
           <span class="guide-category">{{ guide.category }}</span>
           <h1>{{ guide.title }}</h1>
           <span class="guide-read-time">{{ guide.readTime }}</span>

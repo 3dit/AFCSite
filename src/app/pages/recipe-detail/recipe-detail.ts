@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { SidebarComponent } from '../../components/sidebar/sidebar';
@@ -23,8 +23,12 @@ interface Recipe {
   templateUrl: './recipe-detail.html',
   styleUrl: './recipe-detail.css'
 })
-export class RecipeDetailComponent implements OnInit {
+export class RecipeDetailComponent implements OnInit, AfterViewInit, OnDestroy {
   recipe: Recipe | null = null;
+  titleStuck = false;
+
+  @ViewChild('recipeHeader') recipeHeader!: ElementRef;
+  private observer!: IntersectionObserver;
 
   recipes: Recipe[] = [
     {
@@ -320,5 +324,19 @@ export class RecipeDetailComponent implements OnInit {
   ngOnInit() {
     const slug = this.route.snapshot.paramMap.get('slug');
     this.recipe = this.recipes.find(r => r.slug === slug) || null;
+  }
+
+  ngAfterViewInit() {
+    if (this.recipeHeader) {
+      this.observer = new IntersectionObserver(
+        ([entry]) => { this.titleStuck = !entry.isIntersecting; },
+        { threshold: 0 }
+      );
+      this.observer.observe(this.recipeHeader.nativeElement);
+    }
+  }
+
+  ngOnDestroy() {
+    this.observer?.disconnect();
   }
 }

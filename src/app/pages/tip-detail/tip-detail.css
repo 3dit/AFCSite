@@ -15,6 +15,27 @@
   margin-bottom: 0.75rem;
   z-index: 100;
   border-bottom: 2px solid var(--color-secondary);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sticky-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+}
+
+.back-bar.show-title .sticky-title {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .back-link {
