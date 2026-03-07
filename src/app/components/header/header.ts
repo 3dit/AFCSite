@@ -46,6 +46,11 @@ export class HeaderComponent {
       label: 'Contact',
       link: '/contact',
       children: []
+    },
+    {
+      label: 'Legacy',
+      link: '/legacy',
+      children: []
     }
   ];
 

@@ -20,6 +20,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: 'meal-planning', renderMode: RenderMode.Prerender },
   { path: 'about', renderMode: RenderMode.Prerender },
   { path: 'contact', renderMode: RenderMode.Prerender },
+  { path: 'legacy', renderMode: RenderMode.Client },
 
   // Parameterised detail pages — slugs fetched from the API at build time
   {

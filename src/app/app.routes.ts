@@ -9,5 +9,6 @@ export const routes: Routes = [
   { path: 'meal-planning', loadComponent: () => import('./pages/meal-planning/meal-planning').then(m => m.MealPlanningComponent) },
   { path: 'about', loadComponent: () => import('./pages/about/about').then(m => m.AboutComponent) },
   { path: 'contact', loadComponent: () => import('./pages/contact/contact').then(m => m.ContactComponent) },
+  { path: 'legacy', loadComponent: () => import('./pages/legacy/legacy').then(m => m.LegacyComponent) },
   { path: '**', redirectTo: '' }
 ];

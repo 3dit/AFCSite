@@ -1,0 +1,33 @@
+<div class="page-layout">
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Legacy Recipes</h1>
+      <p class="page-intro">Classic recipes from the original collection, preserved from the archive.</p>
+    </div>
+
+    @if (loading()) {
+      <div class="loading">Loading recipes&hellip;</div>
+    } @else if (recipes().length === 0) {
+      <div class="empty">No legacy recipes found.</div>
+    } @else {
+      <div class="recipe-list">
+        @for (recipe of recipes(); track recipe.id) {
+          <article class="recipe-card">
+            <div class="recipe-image-wrap">
+              <img class="recipe-image" [src]="recipe.image" [alt]="recipe.name">
+            </div>
+            <div class="recipe-info">
+              <span class="recipe-label">Legacy</span>
+              <h2>{{ recipe.name }}</h2>
+              @if (recipe.excerpt) {
+                <p>{{ recipe.excerpt }}</p>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </main>
+
+  <app-sidebar />
+</div>
