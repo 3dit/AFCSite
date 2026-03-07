@@ -24,6 +24,7 @@ export class LegacyDetailComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(private route: ActivatedRoute, private location: Location) {}
 
   goBack() {
+    this.legacyService.shouldRestore = true;
     this.location.back();
   }
 

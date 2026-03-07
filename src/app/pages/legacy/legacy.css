@@ -100,6 +100,33 @@
   line-height: 1.5;
 }
 
+.see-more {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.see-more-btn {
+  padding: 0.6rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  background: transparent;
+  border: 2px solid var(--color-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.see-more-btn:hover:not(:disabled) {
+  background: var(--color-secondary);
+  color: #fff;
+}
+
+.see-more-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
 @media (max-width: 1024px) {
   .page-layout {
     grid-template-columns: 1fr;

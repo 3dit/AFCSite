@@ -80,11 +80,12 @@ public partial class LegacyController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] int skip = 0)
     {
         var posts = await _db.RawPosts
             .Where(p => p.Publish)
             .OrderByDescending(p => p.PostDate ?? p.Created)
+            .Skip(skip)
             .Take(20)
             .Select(p => new
             {

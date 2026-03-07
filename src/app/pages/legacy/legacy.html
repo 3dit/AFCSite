@@ -27,6 +27,13 @@
           </article>
         }
       </div>
+      @if (hasMore()) {
+        <div class="see-more">
+          <button class="see-more-btn" (click)="loadMore()" [disabled]="loadingMore()">
+            {{ loadingMore() ? 'Loading\u2026' : 'See More' }}
+          </button>
+        </div>
+      }
     }
   </main>
 
