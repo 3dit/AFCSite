@@ -7,17 +7,18 @@
           <span class="sticky-title">{{ recipe.name }}</span>
         </div>
 
-        <div class="recipe-header" #recipeHeader>
-          <span class="recipe-category">Legacy Recipe</span>
-          <h1>{{ recipe.name }}</h1>
-          @if (recipe.excerpt) {
-            <p class="recipe-description">{{ recipe.excerpt }}</p>
+        <div class="recipe-intro">
+          <div class="recipe-header" #recipeHeader>
+            <span class="recipe-category">Legacy Recipe</span>
+            <h1>{{ recipe.name }}</h1>
+            @if (recipe.excerpt) {
+              <p class="recipe-description">{{ recipe.excerpt }}</p>
+            }
+          </div>
+          @if (recipe.image) {
+            <img class="recipe-hero" [src]="recipe.image" [alt]="recipe.name">
           }
         </div>
-
-        @if (recipe.image) {
-          <img class="recipe-hero" [src]="recipe.image" [alt]="recipe.name">
-        }
 
         <div class="recipe-content">
           <section class="ingredients-section">
