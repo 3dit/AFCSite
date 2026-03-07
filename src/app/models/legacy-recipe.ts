@@ -4,3 +4,13 @@ export interface LegacyRecipe {
   excerpt: string | null;
   image: string;
 }
+
+export interface LegacyRecipeDetail {
+  id: number;
+  name: string;
+  image: string;
+  excerpt: string | null;
+  ingredients: string[];
+  method: string[];
+  notes: string | null;
+}

@@ -1,4 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SidebarComponent } from '../../components/sidebar/sidebar';
 import { LegacyService } from '../../services/legacy.service';
 import { LegacyRecipe } from '../../models/legacy-recipe';
@@ -6,7 +7,7 @@ import { LegacyRecipe } from '../../models/legacy-recipe';
 @Component({
   selector: 'app-legacy',
   standalone: true,
-  imports: [SidebarComponent],
+  imports: [RouterLink, SidebarComponent],
   templateUrl: './legacy.html',
   styleUrl: './legacy.css'
 })

@@ -46,6 +46,29 @@
 
 .recipe-image-wrap {
   flex-shrink: 0;
+  display: block;
+}
+
+.recipe-info h2 a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.recipe-info h2 a:hover {
+  color: var(--color-secondary);
+}
+
+.read-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.read-link:hover {
+  text-decoration: underline;
 }
 
 .recipe-image {

@@ -13,15 +13,16 @@
       <div class="recipe-list">
         @for (recipe of recipes(); track recipe.id) {
           <article class="recipe-card">
-            <div class="recipe-image-wrap">
+            <a [routerLink]="'/legacy/' + recipe.id" class="recipe-image-wrap">
               <img class="recipe-image" [src]="recipe.image" [alt]="recipe.name">
-            </div>
+            </a>
             <div class="recipe-info">
               <span class="recipe-label">Legacy</span>
-              <h2>{{ recipe.name }}</h2>
+              <h2><a [routerLink]="'/legacy/' + recipe.id">{{ recipe.name }}</a></h2>
               @if (recipe.excerpt) {
                 <p>{{ recipe.excerpt }}</p>
               }
+              <a [routerLink]="'/legacy/' + recipe.id" class="read-link">View Recipe</a>
             </div>
           </article>
         }

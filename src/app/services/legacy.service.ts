@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LegacyRecipe } from '../models/legacy-recipe';
+import { LegacyRecipe, LegacyRecipeDetail } from '../models/legacy-recipe';
 import { API_BASE_URL } from './api-base';
 
 @Injectable({ providedIn: 'root' })
@@ -11,5 +11,9 @@ export class LegacyService {
 
   getAll(): Observable<LegacyRecipe[]> {
     return this.http.get<LegacyRecipe[]>(`${this.base}/api/legacy`);
+  }
+
+  getById(id: number): Observable<LegacyRecipeDetail> {
+    return this.http.get<LegacyRecipeDetail>(`${this.base}/api/legacy/${id}`);
   }
 }

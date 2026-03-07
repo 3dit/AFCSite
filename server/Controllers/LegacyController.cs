@@ -38,12 +38,45 @@ public partial class LegacyController : ControllerBase
     [GeneratedRegex(@"<[^>]+>")]
     private static partial Regex StripTagsRegex();
 
+    [GeneratedRegex(@"<ul[^>]*class=""ingredients""[^>]*>(.*?)</ul>", RegexOptions.Singleline | RegexOptions.IgnoreCase)]
+    private static partial Regex IngredientsBlockRegex();
+
+    [GeneratedRegex(@"<ol[^>]*class=""method""[^>]*>(.*?)</ol>", RegexOptions.Singleline | RegexOptions.IgnoreCase)]
+    private static partial Regex MethodBlockRegex();
+
+    [GeneratedRegex(@"<li[^>]*>(.*?)</li>", RegexOptions.Singleline | RegexOptions.IgnoreCase)]
+    private static partial Regex LiItemsRegex();
+
+    [GeneratedRegex(@"\s+")]
+    private static partial Regex WhitespaceRegex();
+
     private static string? ExtractFirstParagraph(string? html)
     {
         if (string.IsNullOrEmpty(html)) return null;
         var match = FirstParagraphRegex().Match(html);
         if (!match.Success) return null;
         return StripTagsRegex().Replace(match.Groups[1].Value, "").Trim();
+    }
+
+    private static List<string> ExtractLiItems(Regex blockRegex, string? html)
+    {
+        if (string.IsNullOrEmpty(html)) return [];
+        var blockMatch = blockRegex.Match(html);
+        if (!blockMatch.Success) return [];
+        return LiItemsRegex().Matches(blockMatch.Groups[1].Value)
+            .Select(m => StripTagsRegex().Replace(m.Groups[1].Value, "").Trim())
+            .Where(s => !string.IsNullOrEmpty(s))
+            .ToList();
+    }
+
+    private static string? ExtractNotes(string? html)
+    {
+        if (string.IsNullOrEmpty(html)) return null;
+        var methodBlock = MethodBlockRegex().Match(html);
+        if (!methodBlock.Success) return null;
+        var after = html[(methodBlock.Index + methodBlock.Length)..];
+        var notes = WhitespaceRegex().Replace(StripTagsRegex().Replace(after, " "), " ").Trim();
+        return string.IsNullOrEmpty(notes) ? null : notes;
     }
 
     [HttpGet]
@@ -70,5 +103,26 @@ public partial class LegacyController : ControllerBase
         });
 
         return Ok(result);
+    }
+
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var post = await _db.RawPosts
+            .Where(p => p.Id == id && p.Publish)
+            .FirstOrDefaultAsync();
+
+        if (post is null) return NotFound();
+
+        return Ok(new
+        {
+            post.Id,
+            post.Name,
+            Image = Images[post.Id % Images.Length],
+            Excerpt = ExtractFirstParagraph(post.Description),
+            Ingredients = ExtractLiItems(IngredientsBlockRegex(), post.Description),
+            Method = ExtractLiItems(MethodBlockRegex(), post.Description),
+            Notes = ExtractNotes(post.Description),
+        });
     }
 }
