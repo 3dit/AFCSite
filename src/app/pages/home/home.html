@@ -1,42 +1,42 @@
 <div class="page-layout">
   <main class="main-content">
     <!-- Hero / Featured -->
-    <section class="hero">
-      <div class="hero-image-placeholder">
-        <span>Featured Recipe</span>
-      </div>
-      <div class="hero-content">
-        <span class="category-tag">{{ featuredRecipe.category }}</span>
-        <h1>{{ featuredRecipe.title }}</h1>
-        <p class="hero-excerpt">{{ featuredRecipe.description }}</p>
-        <div class="hero-meta">
-          <span class="author">By {{ featuredRecipe.author }}</span>
-          <span class="sep">|</span>
-          <span class="date">{{ featuredRecipe.date }}</span>
+    @if (featuredPost(); as post) {
+      <section class="hero">
+        <div class="hero-content">
+          @if (post.category) {
+            <span class="category-tag">{{ post.category }}</span>
+          }
+          <h1>{{ post.name }}</h1>
+          <p class="hero-excerpt">{{ post.excerpt }}</p>
+          <div class="hero-meta">
+            <span class="date">{{ post.postDate | date:'MMMM d, yyyy' }}</span>
+          </div>
+          <a [routerLink]="['/legacy', post.id]" class="read-more">Read Full Post</a>
         </div>
-        <a routerLink="/recipes" class="read-more">Read Full Recipe</a>
-      </div>
-    </section>
+      </section>
+    }
 
     <!-- Latest Articles -->
-    <section class="latest-section">
-      <h2 class="section-heading">Latest Stories</h2>
-      <div class="article-grid">
-        @for (article of latestArticles; track article.title) {
-          <article class="article-card">
-            <div class="card-image-placeholder">
-              <span>{{ article.category }}</span>
-            </div>
-            <div class="card-content">
-              <span class="category-tag small">{{ article.category }}</span>
-              <h3><a routerLink="/recipes">{{ article.title }}</a></h3>
-              <p>{{ article.excerpt }}</p>
-              <span class="card-date">{{ article.date }}</span>
-            </div>
-          </article>
-        }
-      </div>
-    </section>
+    @if (latestPosts().length) {
+      <section class="latest-section">
+        <h2 class="section-heading">Latest Stories</h2>
+        <div class="article-grid">
+          @for (post of latestPosts(); track post.id) {
+            <article class="article-card">
+              <div class="card-content">
+                @if (post.category) {
+                  <span class="category-tag small">{{ post.category }}</span>
+                }
+                <h3><a [routerLink]="['/legacy', post.id]">{{ post.name }}</a></h3>
+                <p>{{ post.excerpt }}</p>
+                <span class="card-date">{{ post.postDate | date:'MMMM d, yyyy' }}</span>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+    }
   </main>
 
   <app-sidebar />

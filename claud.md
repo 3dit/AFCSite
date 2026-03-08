@@ -10,3 +10,6 @@
 
 ## Workflow
 - Pause after features to revisit architecture or do refactor/cleanup when warranted
+
+
+This app uses zoneless change detection (provideZonelessChangeDetection()), so use Angular signals to trigger re-renders, do not rely on zone change detection

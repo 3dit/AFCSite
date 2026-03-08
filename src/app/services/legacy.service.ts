@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LegacyRecipe, LegacyRecipeDetail } from '../models/legacy-recipe';
+import { BlogPost, LegacyRecipe, LegacyRecipeDetail } from '../models/legacy-recipe';
 import { API_BASE_URL } from './api-base';
 
 export interface LegacyListCache {
@@ -33,5 +33,9 @@ export class LegacyService {
 
   getById(id: number): Observable<LegacyRecipeDetail> {
     return this.http.get<LegacyRecipeDetail>(`${this.base}/api/legacy/${id}`);
+  }
+
+  getBlogPosts(): Observable<BlogPost[]> {
+    return this.http.get<BlogPost[]>(`${this.base}/api/legacy/blog`);
   }
 }

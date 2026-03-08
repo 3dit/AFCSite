@@ -106,6 +106,38 @@ public partial class LegacyController : ControllerBase
         return Ok(result);
     }
 
+    [HttpGet("blog")]
+    public async Task<IActionResult> GetBlogPosts()
+    {
+        var posts = await _db.RawPosts
+            .Where(p => p.Publish && p.Categories.Any(c => c.CategoryType != null && c.CategoryType.Name == "BlogPost"))
+            .OrderByDescending(p => p.PostDate ?? p.Created)
+            .Select(p => new
+            {
+                p.Id,
+                p.Name,
+                p.Description,
+                PostDate = p.PostDate ?? p.Created,
+                Category = p.Categories
+                    .Where(c => c.CategoryType != null && c.CategoryType.Name == "BlogPost")
+                    .Select(c => c.Name)
+                    .FirstOrDefault(),
+            })
+            .ToListAsync();
+
+        var result = posts.Select(p => new
+        {
+            p.Id,
+            p.Name,
+            Excerpt = ExtractFirstParagraph(p.Description),
+            Image = Images[p.Id % Images.Length],
+            p.PostDate,
+            p.Category,
+        });
+
+        return Ok(result);
+    }
+
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {

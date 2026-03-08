@@ -5,6 +5,15 @@ export interface LegacyRecipe {
   image: string;
 }
 
+export interface BlogPost {
+  id: number;
+  name: string;
+  excerpt: string | null;
+  image: string;
+  postDate: string;
+  category: string | null;
+}
+
 export interface LegacyRecipeDetail {
   id: number;
   name: string;

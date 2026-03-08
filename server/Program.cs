@@ -108,8 +108,10 @@ if (Directory.Exists(angularRoot))
             return;
         }
 
-        // Fallback to root index.html (Angular will handle routing client-side)
+        // Fallback to root index.html or index.csr.html (Angular will handle routing client-side)
         var fallbackPath = Path.Combine(angularRoot, "index.html");
+        if (!File.Exists(fallbackPath))
+            fallbackPath = Path.Combine(angularRoot, "index.csr.html");
         if (File.Exists(fallbackPath))
         {
             context.Response.ContentType = "text/html";

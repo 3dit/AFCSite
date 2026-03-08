@@ -14,7 +14,7 @@ async function fetchSlugs(endpoint: string): Promise<{ slug: string }[]> {
 
 export const serverRoutes: ServerRoute[] = [
   // Static pages — prerendered at build time
-  { path: '', renderMode: RenderMode.Prerender },
+  { path: '', renderMode: RenderMode.Client },
   { path: 'recipes', renderMode: RenderMode.Client },
   { path: 'tips', renderMode: RenderMode.Client },
   { path: 'meal-planning', renderMode: RenderMode.Prerender },
